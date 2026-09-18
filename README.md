@@ -1,6 +1,6 @@
 # DevPulse: Server & API Health Monitoring CLI
 
-Hey there! 👋 Welcome to **DevPulse**, a lightweight, pure Java command-line tool I built to monitor the health of servers and APIs. 
+Hey there! Welcome to **DevPulse**, a lightweight, pure Java command-line tool I built to monitor the health of servers and APIs. 
 
 No messy dependencies, no heavy frameworks—just a fast, easy-to-use terminal interface to make sure your endpoints are up and running.
 
