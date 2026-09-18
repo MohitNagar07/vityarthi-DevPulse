@@ -1,15 +1,6 @@
 # DevPulse: Server & API Health Monitoring CLI
 
-**Programming in JAVA**
-
-**Name**: Mohit Nagar
-
-**Reg. No.**: 25BAI11366
-
-
-
-
-Hey there! Welcome to **DevPulse**, a lightweight, pure Java command-line tool I built to monitor the health of servers and APIs. 
+Hey there! 👋 Welcome to **DevPulse**, a lightweight, pure Java command-line tool I built to monitor the health of servers and APIs. 
 
 No messy dependencies, no heavy frameworks—just a fast, easy-to-use terminal interface to make sure your endpoints are up and running.
 
@@ -31,15 +22,11 @@ If you've ever wondered, *"Is my website down?"* or *"Why is my API so slow?"*, 
 
 Here's how the project is organized:
 
-```
-Vityarthi 2/
-├── src/                  # All the Java code lives here
-├── data/endpoints.csv    # Where your saved URLs are stored
-├── logs/                 # Error logs get saved here
-├── assets/               # Screenshots for this README
-├── statement.md          # Original project requirements
-└── run.bat               # Just double-click to play!
-```
+- **`src/`** — All the Java code lives here
+- **`data/`** — Where your saved URLs are stored
+- **`logs/`** — Error logs get saved here
+- **`assets/`** — Screenshots for this page
+- **`run.bat`** — Just double-click to start!
 
 ---
 
@@ -51,13 +38,10 @@ You'll need **Java 11 or higher** installed on your computer.
 Just double-click the `run.bat` file! It will compile the code and launch the app for you automatically.
 
 ### The Manual Way (Terminal)
-If you prefer doing things by hand, open your terminal and run:
+If you prefer doing things by hand, open your terminal and type:
 
-```powershell
-# 1. Compile the code
-javac -d bin (Get-ChildItem -Path src -Filter *.java -Recurse | Select-Object -ExpandProperty FullName)
-
-# 2. Start the app
+```text
+javac -d bin src/com/devpulse/*/*.java
 java -cp bin com.devpulse.main.DevPulseApp
 ```
 
