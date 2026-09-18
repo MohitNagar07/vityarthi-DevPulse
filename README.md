@@ -30,20 +30,11 @@ Here's how the project is organized:
 
 ---
 
-## How to Run It
+### How to Run It
 
 You'll need **Java 11 or higher** installed on your computer.
 
-### The Easy Way (Windows)
 Just double-click the `run.bat` file! It will compile the code and launch the app for you automatically.
-
-### The Manual Way (Terminal)
-If you prefer doing things by hand, open your terminal and type:
-
-```text
-javac -d bin src/com/devpulse/*/*.java
-java -cp bin com.devpulse.main.DevPulseApp
-```
 
 ---
 
