@@ -1,153 +1,78 @@
 # DevPulse: Server & API Health Monitoring CLI
 
-> **High-performance, lightweight, pure Java command-line interface for concurrent server and API health tracking, latency benchmarking, and SLA analytics.**
+Hey there! 👋 Welcome to **DevPulse**, a lightweight, pure Java command-line tool I built to monitor the health of servers and APIs. 
 
-[![Java Version](https://img.shields.io/badge/Java-11%2B%20%28Tested%20on%2025%20LTS%29-orange.svg)](#prerequisites)
-[![Architecture](https://img.shields.io/badge/Architecture-3--Tier%20Layered-blue.svg)](docs/ARCHITECTURE.md)
-[![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20%28Standard%20Library%29-brightgreen.svg)](#key-features)
-[![CLI](https://img.shields.io/badge/Interface-100%25%20Pure%20CLI-success.svg)](#interactive-menu-options)
+No messy dependencies, no heavy frameworks—just a fast, easy-to-use terminal interface to make sure your endpoints are up and running.
 
 ---
 
-## Overview
+## What does it do?
 
-Modern software applications rely heavily on distributed web services and microservice architectures. When latency spikes or servers experience downtime, developers and operations teams require immediate diagnosis. **DevPulse** is an enterprise-grade, lightweight CLI monitoring solution engineered in **pure Java** with zero external dependencies.
+If you've ever wondered, *"Is my website down?"* or *"Why is my API so slow?"*, DevPulse is the tool for you. 
 
-DevPulse concurrently checks multiple HTTP and HTTPS targets using asynchronous network threads, records response times with millisecond precision, computes live uptime SLA percentages, and persistently audits incidents to local storage.
-
----
-
-## Key Features
-
-- ⚡ **Asynchronous Concurrency**: Built with Java's standard `CompletableFuture` and `java.net.http.HttpClient` to poll dozens of endpoints simultaneously, ensuring cycle execution time equals only the slowest single request.
-- 🎯 **Sub-Millisecond Latency Benchmarking**: Uses `System.nanoTime()` timers to track min, average, and max latency.
-- 📊 **Real-Time SLA & Analytics Dashboard**: Computes session uptime percentages, failure counts, and performance breakdowns per endpoint.
-- 🚨 **Automated Incident Logging**: Records failed requests (status code mismatches, timeouts, DNS/connection drops) to `logs/health_events.log`.
-- 💾 **File-Based Persistence**: Saves and manages endpoint configurations in standard CSV (`data/endpoints.csv`) with automatic seeding on first run.
-- 🎨 **Modern CLI Presentation**: ANSI color-coded statuses, ASCII border layouts, responsive table formatting, and clear visual indicators (`[OK] UP`, `[FAIL] DOWN`, `[WARN] TIMEOUT`, `[ERR] ERROR`).
-- 🔄 **Continuous Monitor Mode**: Real-time polling mode with configurable refresh intervals and background execution.
+- **Ping Multiple URLs at Once**: Checks all your saved websites at the exact same time so you don't have to wait.
+- **Track Latency**: Tells you exactly how fast (or slow) your servers are responding in milliseconds.
+- **SLA & Uptime Stats**: Keeps track of how often your sites are succeeding vs failing over time.
+- **Log Errors**: If a server goes down, it automatically saves the details to a log file so you can check what went wrong later.
+- **100% Pure Java**: Built using just the standard Java library. 
 
 ---
 
-## Architecture & Package Structure
+## Folder Structure
 
-DevPulse follows strict object-oriented design and layered separation of concerns:
+Here's how the project is organized:
 
 ```
 Vityarthi 2/
-├── src/
-│   └── com/
-│       └── devpulse/
-│           ├── main/
-│           │   └── DevPulseApp.java             # Interactive CLI menu loop & entry point
-│           ├── model/
-│           │   ├── Endpoint.java                # Monitored target entity with CSV serialization
-│           │   ├── HealthCheckResult.java       # Ping result, timing, and log formatting
-│           │   └── ServiceStatus.java           # Enum: UP, DOWN, TIMEOUT, ERROR with ANSI colors
-│           ├── repository/
-│           │   └── FileHandler.java             # File I/O for data/endpoints.csv & logs/health_events.log
-│           ├── service/
-│           │   ├── RegistryService.java         # CRUD business logic and URL validation
-│           │   ├── PollingEngine.java           # Asynchronous multithreaded HTTP polling engine
-│           │   └── AnalyticsService.java        # SLA uptime %, latency stats, and incident dispatch
-│           └── utils/
-│               └── CLIFormatter.java            # ASCII banners, dynamic tables, and color helpers
-├── data/
-│   └── endpoints.csv                            # Persistent endpoint registry
-├── logs/
-│   └── health_events.log                        # Audited downtime and incident history
-├── docs/
-│   └── ARCHITECTURE.md                          # UML, Class, Use-Case & Sequence Diagrams
-├── statement.md                                 # Academic problem statement and methodology
-├── run.bat                                      # One-click Windows CMD compilation and run script
-└── run.ps1                                      # One-click PowerShell compilation and run script
+├── src/                  # All the Java code lives here
+├── data/endpoints.csv    # Where your saved URLs are stored
+├── logs/                 # Error logs get saved here
+├── assets/               # Screenshots for this README
+├── statement.md          # Original project requirements
+└── run.bat               # Just double-click to play!
 ```
 
 ---
 
-## Prerequisites
+## How to Run It
 
-- **Java Development Kit (JDK)**: Version 11 or higher (OpenJDK, Oracle JDK, or Temurin).
-- No external libraries, Gradle, or Maven installations needed!
+You'll need **Java 11 or higher** installed on your computer.
 
----
+### The Easy Way (Windows)
+Just double-click the `run.bat` file! It will compile the code and launch the app for you automatically.
 
-## Quick Start & Running Instructions
+### The Manual Way (Terminal)
+If you prefer doing things by hand, open your terminal and run:
 
-### Option 1: Using Windows Batch Script (`run.bat`)
-Double-click `run.bat` or run from Command Prompt:
-```cmd
-run.bat
-```
-
-### Option 2: Using PowerShell Script (`run.ps1`)
 ```powershell
-.\run.ps1
-```
-
-### Option 3: Manual Compilation & Execution
-From the root project directory:
-```powershell
-# 1. Compile all Java source files into bin directory
+# 1. Compile the code
 javac -d bin (Get-ChildItem -Path src -Filter *.java -Recurse | Select-Object -ExpandProperty FullName)
 
-# 2. Run the interactive CLI application
+# 2. Start the app
 java -cp bin com.devpulse.main.DevPulseApp
-```
-
-### Option 4: Headless Automated Smoke Test (CI/CD Mode)
-To run a one-shot automated batch health check across all endpoints without entering interactive menu mode:
-```powershell
-java -cp bin com.devpulse.main.DevPulseApp --check-once
-```
-
----
-
-## Interactive Menu Options
-
-When launched, DevPulse presents an interactive command center:
-
-```
-================================================================================
-                         DevPulse Health Monitoring CLI                         
-================================================================================
-
-+------------------------ MAIN MENU ------------------------+
-  1. List Registered Endpoints
-  2. Add New Endpoint
-  3. Update Existing Endpoint
-  4. Delete Endpoint
-  5. Run Health Check (Concurrent Ping All)
-  6. Start Continuous Real-Time Monitor
-  7. View Analytics & SLA Summary Report
-  8. View Incident Logs (health_events.log)
-  9. Reload Configuration from Disk
-  0. Exit Application
-+-----------------------------------------------------------+
-
-Select an option [0-9]:
 ```
 
 ---
 
 ## Screenshots
 
-### 1. Main Menu Interface
+Check out what the app looks like in action:
+
+### 1. Main Menu
 ![Main Menu](assets/main_menu.png)
 
-### 2. List Registered Endpoints
+### 2. List of Saved Endpoints
 ![List Endpoints](assets/list_endpoints.png)
 
-### 3. Add & Validate New Endpoint
+### 3. Adding a New URL
 ![Add Endpoint](assets/add_endpoint.png)
 
-### 4. Update Existing Endpoint
+### 4. Updating an Endpoint
 ![Update Endpoint](assets/update_endpoint.png)
 
-### 5. Concurrent Health Check Cycle
+### 5. Running the Health Check
 ![Concurrent Health Check](assets/health_check.png)
 
 ---
 
-## License & Academic Compliance
-Developed strictly following object-oriented software engineering principles for academic evaluation and real-world developer productivity. All source code contains comprehensive JavaDoc comments.
+Enjoy using DevPulse! Let me know if you run into any bugs or have any ideas to make it better.
