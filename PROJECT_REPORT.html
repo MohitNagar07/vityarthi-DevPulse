@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevPulse - Project Report (VITyarthi)</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+    margin: 0;
+    padding: 25px;
+    background-color: #ffffff;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  /* Cover Page */
+  .cover-page {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px double #2563eb;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+  }
+  .cover-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    color: #4b5563;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+  .cover-box {
+    border-top: 2px solid #e5e7eb;
+    border-bottom: 2px solid #e5e7eb;
+    padding: 25px 0;
+    width: 80%;
+    margin: 30px auto;
+  }
+  .cover-info {
+    font-size: 15px;
+    margin: 8px 0;
+    color: #374151;
+  }
+  .cover-info strong {
+    color: #111827;
+  }
+  .cover-footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  /* Document Headings */
+  h1 {
+    font-size: 22px;
+    color: #1e3a8a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 6px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    font-size: 17px;
+    color: #1f2937;
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 15px;
+    color: #374151;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  p, li {
+    font-size: 13.5px;
+    text-align: justify;
+  }
+  ul, ol {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 12.5px;
+  }
+  th, td {
+    border: 1px solid #d1d5db;
+    padding: 7px 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f3f4f6;
+    color: #1e3a8a;
+    font-weight: 600;
+  }
+  tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+
+  /* Code & ASCII blocks */
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11.5px;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.4;
+    margin: 12px 0;
+  }
+  code {
+    background-color: #f3f4f6;
+    color: #b91c1c;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+  }
+  pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .diagram-box {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 15px 0;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .no-print { display: none; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+  }
+</style>
+</head>
+<body>
+
+<div class="no-print" style="background:#eff6ff; border:1px solid #3b82f6; padding:12px; border-radius:6px; margin-bottom:20px; text-align:center;">
+  <strong>💡 Tip for PDF Export:</strong> Press <code>Ctrl + P</code> in your browser, select <strong>"Save as PDF"</strong>, ensure margins are set to "Default", and click <strong>Save</strong>!
+</div>
+
+<!-- ================= 1. COVER PAGE ================= -->
+<div class="cover-page">
+  <div style="font-size:14px; font-weight:700; letter-spacing:2px; color:#6b7280; margin-bottom:15px;">
+    Vellore Institute of Technology &bull; VITyarthi
+  </div>
+  <div class="cover-title">DevPulse: Server & API Health Monitoring CLI</div>
+  <div class="cover-subtitle">Academic Project Report & Software Engineering Specification</div>
+
+  <div class="cover-box">
+    <div class="cover-info"><strong>Course:</strong> Flipped Course Evaluation / Advanced Object-Oriented Software Engineering</div>
+    <div class="cover-info"><strong>Project Category:</strong> CLI Software Engineering & Distributed Systems Monitoring</div>
+    <div class="cover-info"><strong>Student Name:</strong> Mohit Nagar</div>
+    <div class="cover-info"><strong>Technology Stack:</strong> Pure Java (JDK 11+), Concurrency (CompletableFuture), Git</div>
+    <div class="cover-info"><strong>Architecture:</strong> 3-Tier Layered Architecture (Presentation, Service, Data Access)</div>
+  </div>
+
+  <div class="cover-footer">
+    Academic Year: 2026 &bull; Submission Date: September 2026<br>
+    Status: 100% Implemented, Verified & Ready for Evaluation
+  </div>
+</div>
+<div class="page-break"></div>
+
+<!-- ================= 2. INTRODUCTION ================= -->
+<h1>2. Introduction</h1>
+<p>
+  Modern software engineering is dominated by distributed microservices, RESTful APIs, and cloud-native infrastructure. Software systems are split into dozens or hundreds of decoupled services that interact over the network. In such complex environments, network degradation, latency spikes, and sudden service outages can cascade through interdependent components, severely undermining user experience and business operations.
+</p>
+<p>
+  While enterprise Application Performance Monitoring (APM) tools such as Datadog, New Relic, and Dynatrace provide rich observability, they introduce significant drawbacks: they are resource-heavy, closed-source, require complex agent installations, and depend on browser-based graphical user interfaces. When software developers, DevOps practitioners, and system administrators operate in terminal environments (such as remote SSH bastion hosts, containerized Linux runtimes, or automated continuous integration runners), heavy GUI applications are impractical.
+</p>
+<p>
+  <strong>DevPulse</strong> is engineered to bridge this gap. It is an autonomous, lightweight, and high-performance Command-Line Interface (CLI) application built exclusively in <strong>pure Java (JDK 11+)</strong> with zero external third-party dependencies. DevPulse leverages asynchronous non-blocking multithreading (<code>CompletableFuture</code> and <code>java.net.http.HttpClient</code>) to poll dozens of remote endpoints concurrently, benchmark response latency with hardware timers, compute live SLA uptime percentages, and persistently log failure incidents to disk.
+</p>
+
+<!-- ================= 3. PROBLEM STATEMENT ================= -->
+<h1>3. Problem Statement</h1>
+<p>
+  System administrators and software engineers managing distributed web applications face several recurrent operational hurdles:
+</p>
+<ul>
+  <li><strong>Tedious Manual Verification:</strong> Manually checking endpoint availability using native <code>curl</code> or basic <code>ping</code> commands is sequential, time-consuming, and lacks structured aggregated metrics.</li>
+  <li><strong>Lack of Terminal-Native Concurrency:</strong> Sequential HTTP query scripts scale linearly ($O(N)$) with network latency. Probing 50 separate endpoints with an average latency of 200ms requires 10 seconds sequentially, leading to outdated health metrics.</li>
+  <li><strong>Absence of Persistent Benchmarking & Incident Auditing:</strong> Ad-hoc terminal scripts lack built-in local configuration persistence, historical latency distributions (min/avg/max), and automated incident event logs.</li>
+  <li><strong>Resource Overhead of GUI Monitors:</strong> GUI and web-based monitoring dashboards consume hundreds of megabytes of RAM, rendering them unsuitable for minimal cloud servers and headless development environments.</li>
+</ul>
+<p>
+  <strong>DevPulse resolves these issues</strong> by providing a high-performance terminal CLI that concurrently pings all monitored targets, displays color-coded ASCII health tables, tracks session SLA percentages, records outage events to a local audit log, and manages targets through an interactive menu.
+</p>
+
+<!-- ================= 4. FUNCTIONAL REQUIREMENTS ================= -->
+<h1>4. Functional Requirements</h1>
+<p>The system is architected around three cohesive functional modules:</p>
+
+<h3>4.1 Module 1: Service Registry & Configuration (CRUD)</h3>
+<ul>
+  <li><strong>Add Endpoint:</strong> Allows users to register new HTTP/HTTPS targets with a descriptive name, target URL, expected HTTP status code (default 200), and timeout threshold (1–60s).</li>
+  <li><strong>List Endpoints:</strong> Renders a formatted tabular ASCII overview of all monitored endpoints, their unique IDs (<code>EP-xxx</code>), URLs, and configurations.</li>
+  <li><strong>Update Endpoint:</strong> Allows modifying existing endpoint attributes with sensible fallbacks to retain existing values.</li>
+  <li><strong>Delete Endpoint:</strong> Allows removing endpoints with explicit confirmation to prevent accidental loss.</li>
+  <li><strong>Persistence:</strong> Automatically persists all modifications to <code>data/endpoints.csv</code> using RFC-4180 compliant escaping and atomic temporary file swaps.</li>
+</ul>
+
+<h3>4.2 Module 2: Polling & Metrics Engine</h3>
+<ul>
+  <li><strong>Asynchronous Concurrent Polling:</strong> Probes all registered endpoints concurrently using a bounded thread pool and Java's <code>HttpClient</code>. Total batch check duration is bounded by the slowest single request ($\max(t_i)$).</li>
+  <li><strong>High-Precision Latency Benchmarking:</strong> Measures round-trip network response duration with sub-millisecond precision using <code>System.nanoTime()</code>.</li>
+  <li><strong>Fault Handling & Error Classification:</strong> Maps network outcomes to distinct statuses: <code>UP</code>, <code>DOWN</code>, <code>TIMEOUT</code>, and <code>ERROR</code>, gracefully handling DNS resolution failures, connection refusals, and SSL certificate handshake errors without crashing.</li>
+</ul>
+
+<h3>4.3 Module 3: Analytics, Reporting & Alert Auditing</h3>
+<ul>
+  <li><strong>Real-Time Terminal Dashboard:</strong> Renders status badges (<code>[OK] UP</code>, <code>[FAIL] DOWN</code>, <code>[WARN] TIMEOUT</code>, <code>[ERR] ERROR</code>), HTTP status codes, latency, and diagnostics.</li>
+  <li><strong>SLA Uptime Computation:</strong> Evaluates session uptime percentage: $\text{SLA} = (\text{Successful Checks} / \text{Total Checks}) \times 100$.</li>
+  <li><strong>Latency Distribution Statistics:</strong> Computes minimum, maximum, and average response latency per target across successful HTTP responses.</li>
+  <li><strong>Incident Event Auditing:</strong> Automatically logs timestamped failure events to <code>logs/health_events.log</code>.</li>
+</ul>
+
+<!-- ================= 5. NON-FUNCTIONAL REQUIREMENTS ================= -->
+<h1>5. Non-Functional Requirements</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement</th>
+      <th>Specification & Quality Metric</th>
+      <th>Implementation Strategy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Performance & Concurrency</strong></td>
+      <td>Total cycle execution time $O(\max(t_i))$ rather than $O(\sum t_i)$.</td>
+      <td>Asynchronous non-blocking worker pool with <code>CompletableFuture</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Reliability & Fault Tolerance</strong></td>
+      <td>Zero unhandled crashes during network outages or bad inputs.</td>
+      <td>Multi-tiered exception handling (DNS, timeout, SSL, EOF protection).</td>
+    </tr>
+    <tr>
+      <td><strong>Data Integrity</strong></td>
+      <td>Zero data loss or file corruption during process interruption.</td>
+      <td>Atomic temporary file writes (<code>.tmp</code> &rarr; <code>ATOMIC_MOVE</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>Resource Efficiency</strong></td>
+      <td>$O(1)$ memory overhead and zero external library dependencies.</td>
+      <td>Standard Java library; bounded tail log reading with <code>ArrayDeque</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Portability & Usability</strong></td>
+      <td>Runs seamlessly on Windows, Linux, and macOS.</td>
+      <td>Cross-platform ANSI terminal formatting and pure Java bytecode.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ================= 6. SYSTEM ARCHITECTURE ================= -->
+<h1>6. System Architecture</h1>
+<p>
+  DevPulse adheres strictly to a <strong>3-Tier Layered Architecture</strong> with decoupled layers:
+</p>
+<pre>
++-------------------------------------------------------------------------------+
+|                           PRESENTATION LAYER                                  |
+|   - DevPulseApp (Interactive CLI Menu Loop & Headless Test Flag)              |
+|   - CLIFormatter (ANSI Colors, Visible-Width Table Padding, ASCII Layouts)    |
++-------------------------------------------------------------------------------+
+                                    |
+                                    v
++-------------------------------------------------------------------------------+
+|                              SERVICE LAYER                                    |
+|   - RegistryService (CRUD Business Logic, URL & Range Validation)             |
+|   - PollingEngine (CompletableFuture, ThreadPool, java.net.http.HttpClient)   |
+|   - AnalyticsService (SLA % Calculation, Latency Stats, Incident Dispatch)   |
++-------------------------------------------------------------------------------+
+                        |                               |
+                        v                               v
++-----------------------------------------------+   +---------------------------+
+|               MODEL LAYER                     |   |    DATA ACCESS LAYER      |
+|   - Endpoint (Entity & RFC-4180 Serialization)|   |   - FileHandler           |
+|   - HealthCheckResult (Ping Outcome & Timing) |   |     (Atomic CSV Store &   |
+|   - ServiceStatus (Status Enum & Color Codes) |   |      Bounded Log Tail)    |
++-----------------------------------------------+   +---------------------------+
+                                                                |
+                                                                v
+                                                    +---------------------------+
+                                                    |      PERSISTENT STORAGE   |
+                                                    |   - data/endpoints.csv    |
+                                                    |   - logs/health_events.log|
+                                                    +---------------------------+
+</pre>
+
+<!-- ================= 7. DESIGN DIAGRAMS ================= -->
+<div class="page-break"></div>
+<h1>7. Design Diagrams</h1>
+
+<h3>7.1 Use Case Diagram</h3>
+<p>Details the core use cases available to system administrators and engineers:</p>
+<pre>
+                      +---------------------------------------+
+                      |            DevPulse System            |
+                      |                                       |
+                      |  (UC1: List Monitored Endpoints)      |
+                      |  (UC2: Add New Endpoint Target)       |
+                      |  (UC3: Update / Delete Target)        |
+     [User / Admin] --+-->(UC4: Concurrent Health Check Cycle)|
+                      |  (UC5: Continuous Live Monitor)       |
+                      |  (UC6: View SLA & Latency Analytics)  |
+                      |  (UC7: View Incident Event Logs)      |
+                      |  (UC8: Headless Automated Smoke Test) |
+                      +---------------------------------------+
+</pre>
+
+<h3>7.2 Workflow / Process Flow Diagram</h3>
+<pre>
+[Start App] ──> [Initialize Storage & Load data/endpoints.csv]
+       │
+       ▼
+ ┌───>[Display Main Menu (Options 0 - 9)]
+ │     │
+ │     ├── [Option 1] ──> List Endpoints Table ─────────────────────┐
+ │     ├── [Option 2] ──> Prompt & Validate Input ──> Atomic Save ──┤
+ │     ├── [Option 3] ──> Update Target Fields ───> Atomic Save ────┤
+ │     ├── [Option 4] ──> Confirm & Delete ─────────> Atomic Save ──┤
+ │     ├── [Option 5] ──> Concurrently Poll All Endpoints ──────────┤
+ │     │                  ├─► Compute Latency & Status Code         │
+ │     │                  ├─► Record Analytics & Log Failures       │
+ │     │                  └─► Render Aligned ASCII Results Table ───┤
+ │     ├── [Option 6] ──> Start Continuous Monitor Loop ────────────┤
+ │     ├── [Option 7] ──> Render SLA & Latency Statistics ──────────┤
+ │     ├── [Option 8] ──> Read Tail of logs/health_events.log ──────┤
+ │     ├── [Option 9] ──> Reload Endpoints from Disk ───────────────┤
+ │     └── [Option 0 / EOF] ──> Shutdown ThreadPool & Exit ─────────┘
+ └──────────────────────────────────────────────────────────────────┘
+</pre>
+
+<h3>7.3 Sequence Diagram (Concurrent Health Check Polling Cycle)</h3>
+<pre>
+Admin              DevPulseApp         RegistryService      PollingEngine        Remote APIs      AnalyticsService    FileHandler
+  │                     │                     │                   │                   │                  │                 │
+  │── Select Option 5 ─►│                     │                   │                   │                  │                 │
+  │                     │── getAllEndpoints()►│                   │                   │                  │                 │
+  │                     │◄── List&lt;Endpoint&gt; ──│                   │                   │                  │                 │
+  │                     │── checkAllConcurrently(endpoints) ─────►│                   │                  │                 │
+  │                     │                     │                   │── Parallel GET ──►│                  │                 │
+  │                     │                     │                   │◄── HTTP Response ─│                  │                 │
+  │                     │◄── List&lt;HealthCheckResult&gt; ─────────────│                   │                  │                 │
+  │                     │── recordBatch(results) ───────────────────────────────────────────────────────►│                 │
+  │                     │                     │                   │                   │                  │── (If DOWN) ───►│
+  │                     │                     │                   │                   │                  │   logIncident() │
+  │                     │◄── Done ───────────────────────────────────────────────────────────────────────│                 │
+  │◄─ Render Table ─────│                     │                   │                   │                  │                 │
+</pre>
+
+<h3>7.4 Class / Component Diagram</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Layer / Package</th>
+      <th>Class Name</th>
+      <th>Key Attributes / Methods</th>
+      <th>Primary Responsibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>com.devpulse.model</code></td>
+      <td><code>Endpoint</code></td>
+      <td><code>id, name, url, expectedStatusCode, timeoutSeconds, toCsv(), fromCsv()</code></td>
+      <td>Domain entity representing monitored targets with RFC-4180 serialization.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.model</code></td>
+      <td><code>ServiceStatus</code></td>
+      <td><code>UP, DOWN, TIMEOUT, ERROR, getColoredLabel(), isHealthy()</code></td>
+      <td>Enumeration of health states with ANSI color sequences.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.model</code></td>
+      <td><code>HealthCheckResult</code></td>
+      <td><code>endpoint, latencyMs, statusCode, status, message, toLogEntry()</code></td>
+      <td>Encapsulates the result of a single health probe execution.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.repository</code></td>
+      <td><code>FileHandler</code></td>
+      <td><code>loadEndpoints(), saveEndpoints(), logIncident(), readRecentLogs()</code></td>
+      <td>Data Access Layer with atomic file swaps and bounded memory log tailing.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.service</code></td>
+      <td><code>RegistryService</code></td>
+      <td><code>addEndpoint(), updateEndpoint(), deleteEndpoint(), isValidUrl()</code></td>
+      <td>Business logic for target registration, bounds checking, and validation.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.service</code></td>
+      <td><code>PollingEngine</code></td>
+      <td><code>checkEndpoint(), checkAllConcurrently(), shutdown()</code></td>
+      <td>Multithreaded HTTP polling engine using <code>CompletableFuture</code>.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.service</code></td>
+      <td><code>AnalyticsService</code></td>
+      <td><code>recordResult(), getGlobalUptimePercentage(), getAllStats()</code></td>
+      <td>SLA uptime percentage and latency distribution calculator.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.utils</code></td>
+      <td><code>CLIFormatter</code></td>
+      <td><code>stripAnsi(), padRight(), printHealthCheckResults(), printBanner()</code></td>
+      <td>ANSI color styling and mathematically aligned ASCII table layouts.</td>
+    </tr>
+    <tr>
+      <td><code>com.devpulse.main</code></td>
+      <td><code>DevPulseApp</code></td>
+      <td><code>main(), run(), readLineSafe(), handleRunHealthCheck()</code></td>
+      <td>Interactive CLI entry point coordinating layers and processing inputs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>7.5 Storage & Schema Design</h3>
+<p>
+  DevPulse utilizes two lightweight, portable persistent file stores:
+</p>
+<p><strong>Store 1: Target Registry (<code>data/endpoints.csv</code>)</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Data Type</th>
+      <th>Constraints</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>String</td><td>Primary Key, Format <code>EP-\d+</code></td><td><code>EP-101</code></td></tr>
+    <tr><td><code>name</code></td><td>String</td><td>Non-empty, quoted if comma present</td><td><code>"Cloudflare Trace"</code></td></tr>
+    <tr><td><code>url</code></td><td>String</td><td>Valid HTTP/HTTPS URI</td><td><code>https://1.1.1.1/cdn-cgi/trace</code></td></tr>
+    <tr><td><code>expectedStatusCode</code></td><td>Integer</td><td>Range: 100 to 599</td><td><code>200</code></td></tr>
+    <tr><td><code>timeoutSeconds</code></td><td>Integer</td><td>Range: 1 to 60</td><td><code>5</code></td></tr>
+  </tbody>
+</table>
+
+<p><strong>Store 2: Incident Event Audit Log (<code>logs/health_events.log</code>)</strong></p>
+<p>Appends failure records formatted with ISO timestamps:</p>
+<pre>[2026-09-18 09:52:13] [STATUS: DOWN] [ID: EP-105] [NAME: HTTPBin Simulated Failure] [URL: https://httpbin.org/status/500] [CODE: 500] [LATENCY: 1290ms] - Unexpected status: expected 200, got 500</pre>
+
+<!-- ================= 8. DESIGN DECISIONS & RATIONALE ================= -->
+<div class="page-break"></div>
+<h1>8. Design Decisions & Rationale</h1>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Architectural Decision</th>
+      <th>Alternatives Considered</th>
+      <th>Engineering Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Zero External Dependencies</strong> (Standard Java 11+)</td>
+      <td>Apache HttpClient, Jackson, or Retrofit</td>
+      <td>Guarantees effortless compilation on any machine with JDK installed; zero security vulnerabilities from external libraries; zero build-tool setup friction.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Asynchronous Parallel Polling</strong> (<code>CompletableFuture</code>)</td>
+      <td>Sequential single-threaded polling</td>
+      <td>Sequential polling scales linearly ($O(\sum t_i)$). Parallel polling scales as $O(\max(t_i))$, completing 5 pings in ~1.3 seconds rather than 5+ seconds.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Atomic Temporary File Swapping</strong></td>
+      <td>Direct file truncation (<code>TRUNCATE_EXISTING</code>)</td>
+      <td>Direct writes risk empty or corrupt configuration files if the process is terminated mid-write. Writing to <code>.tmp</code> and swapping via <code>ATOMIC_MOVE</code> guarantees data integrity.</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Memory-Bounded Circular Buffer</strong> (<code>ArrayDeque</code>)</td>
+      <td><code>Files.readAllLines</code></td>
+      <td><code>Files.readAllLines</code> loads entire files into heap memory, causing <code>OutOfMemoryError</code> on large logs. A bounded queue keeps memory consumption constant ($O(\text{tail})$).</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Visual Width Padding</strong> (<code>stripAnsi</code>)</td>
+      <td>Standard <code>printf</code> string formatters</td>
+      <td>ANSI escape codes have non-zero character length but zero visible width, causing ASCII borders to stagger. Calculating true visible length creates aligned tables.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ================= 9. IMPLEMENTATION DETAILS ================= -->
+<h1>9. Implementation Details</h1>
+<p>Key algorithmic highlights implemented in the codebase include:</p>
+
+<h3>9.1 Parallel Polling Engine (<code>PollingEngine.java</code>)</h3>
+<p>
+  Utilizes <code>CompletableFuture.supplyAsync</code> bound to a custom thread pool sized according to CPU cores (<code>Math.min(32, cores * 2)</code>) to dispatch asynchronous HTTP GET requests. Response bodies are discarded using <code>HttpResponse.BodyHandlers.discarding()</code> to prevent unnecessary memory allocations.
+</p>
+
+<h3>9.2 RFC-4180 Compliant CSV Parser (<code>Endpoint.java</code>)</h3>
+<p>
+  Replaces naive comma splitting with a stateful tokenizer that respects double-quote enclosures (<code>"..."</code>) and escaped quotes (<code>""</code>), allowing endpoint names to safely include commas and special characters.
+</p>
+
+<h3>9.3 Mathematical Visible-Width Alignment (<code>CLIFormatter.java</code>)</h3>
+<p>
+  Implements <code>stripAnsi()</code> using regular expressions (<code>\u001B\[[;\d]*m</code>) to calculate true display width, appending exact trailing spaces via <code>padRight()</code> so that ANSI colored labels never disrupt ASCII table borders.
+</p>
+
+<!-- ================= 10. SCREENSHOTS & RESULTS ================= -->
+<h1>10. Screenshots & Results</h1>
+<h3>10.1 Concurrent Health Check Execution Output</h3>
+<pre>
+Running automated single batch check on 5 endpoints...
++----------+------------------------+--------------+--------+------------+----------+--------------------------+
+| ID       | Service Name           | Status       | Code   | Latency    | Time     | Diagnostics              |
++----------+------------------------+--------------+--------+------------+----------+--------------------------+
+| EP-101   | Cloudflare Trace       | [OK] UP      | 200    | 440 ms     | 09:52:13 | Healthy (HTTP 200)       |
+| EP-102   | Google Public DNS      | [OK] UP      | 200    | 440 ms     | 09:52:13 | Healthy (HTTP 200)       |
+| EP-103   | JSONPlaceholder API    | [OK] UP      | 200    | 738 ms     | 09:52:13 | Healthy (HTTP 200)       |
+| EP-104   | HTTPBin Success (200)  | [OK] UP      | 200    | 1258 ms    | 09:52:13 | Healthy (HTTP 200)       |
+| EP-105   | HTTPBin Simulated F... | [FAIL] DOWN  | 500    | 1290 ms    | 09:52:13 | Unexpected status: ex... |
++----------+------------------------+--------------+--------+------------+----------+--------------------------+
+Total cycle execution time: 1302 ms (parallel concurrency achieved)
+</pre>
+
+<h3>10.2 SLA Analytics & Latency Summary Output</h3>
+<pre>
+============================= GLOBAL HEALTH SUMMARY =============================
+  Total Invocations: 5      | Failures: 1      | Overall Session SLA: 80.00%
+=================================================================================
++----------+------------------------+------------+--------+--------+----------+----------+----------+
+| ID       | Service Name           | Uptime SLA | Pings  | Fails  | Min Lat  | Avg Lat  | Max Lat  |
++----------+------------------------+------------+--------+--------+----------+----------+----------+
+| EP-101   | Cloudflare Trace       | 100.00%    | 1      | 0      | 440ms    | 440.0ms  | 440ms    |
+| EP-102   | Google Public DNS      | 100.00%    | 1      | 0      | 440ms    | 440.0ms  | 440ms    |
+| EP-103   | JSONPlaceholder API    | 100.00%    | 1      | 0      | 738ms    | 738.0ms  | 738ms    |
+| EP-104   | HTTPBin Success (200)  | 100.00%    | 1      | 0      | 1258ms   | 1258.0ms | 1258ms   |
+| EP-105   | HTTPBin Simulated F... | 0.00%      | 1      | 1      | 1290ms   | 1290.0ms | 1290ms   |
++----------+------------------------+------------+--------+--------+----------+----------+----------+
+</pre>
+
+<!-- ================= 11. TESTING APPROACH ================= -->
+<div class="page-break"></div>
+<h1>11. Testing Approach</h1>
+<p>
+  DevPulse incorporates a comprehensive automated verification test suite (<code>com.devpulse.test.DevPulseTest</code>). All 8 test cases pass with zero failures:
+</p>
+<pre>
+=================================================
+  Running DevPulse Comprehensive Test Suite
+=================================================
+[PASS] testEndpointModelAndCsvRFC4180
+[PASS] testUrlValidationAndBoundaries
+[PASS] testFilePersistenceAndAtomicWrite
+[PASS] testMemoryBoundedLogReading
+[PASS] testAnalyticsAndSlaCalculation
+[PASS] testAnalyticsEndpointSync
+[PASS] testCliFormatterVisualPadding
+[PASS] testPollingEngineConcurrency
+=================================================
+  Tests Completed: 8 Passed, 0 Failed
+=================================================
+</pre>
+
+<!-- ================= 12. CHALLENGES FACED ================= -->
+<h1>12. Challenges Faced & Engineering Solutions</h1>
+<ol>
+  <li><strong>Invisible ANSI Color Sequences Misaligning Tables:</strong> Standard <code>printf</code> counts invisible escape codes toward character width. Solved by developing <code>stripAnsi()</code> and <code>padRight()</code> to calculate true visible width.</li>
+  <li><strong>Atomic File Persistence Across Platforms:</strong> Direct file replacements on Windows can collide with filesystem lock handles. Solved by implementing atomic temporary file writing with fallback replacement handling.</li>
+  <li><strong>Unbounded Thread Spawning Under High Target Loads:</strong> Using an unbounded thread pool could trigger OS thread exhaustion. Solved by bounding the thread pool to available processor cores.</li>
+  <li><strong>Scanner Crashing on EOF:</strong> Standard <code>Scanner.nextLine()</code> throws <code>NoSuchElementException</code> on stream termination or non-interactive pipes. Solved by implementing a defensive <code>readLineSafe()</code> helper.</li>
+</ol>
+
+<!-- ================= 13. LEARNINGS & KEY TAKEAWAYS ================= -->
+<h1>13. Learnings & Key Takeaways</h1>
+<ul>
+  <li><strong>Mastery of Modern Java Concurrency:</strong> Practical experience utilizing <code>CompletableFuture</code>, <code>ExecutorService</code>, and non-blocking HTTP clients for parallel network operations.</li>
+  <li><strong>Clean Architecture & SOLID Principles:</strong> Implementing decoupled layers (Model, Repository, Service, Presentation) results in clean, extensible, and easily testable code.</li>
+  <li><strong>Defensive Programming:</strong> Designing for failure by validating boundaries, handling timeouts, and implementing atomic persistence safeguards application resilience.</li>
+  <li><strong>Terminal User Experience:</strong> Demonstrates that CLI applications can deliver a clear, intuitive visual experience without the overhead of heavy graphical frameworks.</li>
+</ul>
+
+<!-- ================= 14. FUTURE ENHANCEMENTS ================= -->
+<h1>14. Future Enhancements</h1>
+<ul>
+  <li><strong>Multi-Channel Webhook Notifications:</strong> Dispatching instant alert messages to Slack, Discord, or Microsoft Teams when a service goes DOWN.</li>
+  <li><strong>Prometheus & OpenTelemetry Metrics Export:</strong> Exposing a lightweight metrics port for scraping by enterprise observability platforms.</li>
+  <li><strong>HTTP POST Payload & Header Customization:</strong> Supporting custom JSON payloads and authorization headers for authenticated microservice endpoints.</li>
+  <li><strong>SSL Expiry Auditing:</strong> Proactively alerting on impending SSL/TLS certificate expirations.</li>
+</ul>
+
+<!-- ================= 15. REFERENCES ================= -->
+<h1>15. References</h1>
+<ol>
+  <li>Shafranovich, Y. (2005). <em>Common Format and MIME Type for Comma-Separated Values (CSV) Files</em>. RFC 4180, Network Working Group.</li>
+  <li>Oracle Corporation. (2024). <em>Java Platform, Standard Edition & Java Development Kit Version 11/21/25 API Specification - java.net.http.HttpClient</em>.</li>
+  <li>Martin, R. C. (2008). <em>Clean Code: A Handbook of Agile Software Craftsmanship</em>. Prentice Hall.</li>
+  <li>Goetz, B., Peierls, T., Bloch, J., Bowbeer, J., Holmes, D., & Lea, D. (2006). <em>Java Concurrency in Practice</em>. Addison-Wesley.</li>
+  <li>Fielding, R. T., & Taylor, R. N. (2002). <em>Principled Design of the Modern Web Architecture</em>. ACM Transactions on Internet Technology (TOIT), 2(2), 115-150.</li>
+</ol>
+
+</body>
+</html>
